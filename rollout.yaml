@@ -88,5 +88,5 @@ spec:
                 command: ["/bin/sh"]
                 args: 
                 - -c 
-                - echo "Pass Rollouts Test" && sleep 20 && exit 2
+                - echo "Pass Rollouts Test" && sleep 20 
               restartPolicy: Never
