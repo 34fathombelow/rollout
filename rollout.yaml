@@ -27,14 +27,14 @@ spec:
         - templateName: fail
       steps:
       - setWeight: 10
-      #- analysis:
-      #    templates:
-      #    - templateName: pass
+      - analysis:
+          templates:
+          - templateName: pass
       - pause: {duration: 30s }
       - setWeight: 100
-      #- analysis:
-      #    templates:
-      #    - templateName: fail
+      - analysis:
+          templates:
+          - templateName: fail
       - pause: {duration: 30s }
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -61,7 +61,7 @@ spec:
                 command: ["/bin/sh"]
                 args: 
                 - -c 
-                - echo "Pass Rollouts Test" && sleep 1000
+                - echo "Pass Rollouts Test" && sleep 30
               restartPolicy: Never
 ---
 apiVersion: argoproj.io/v1alpha1
