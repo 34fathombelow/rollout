@@ -36,8 +36,8 @@ spec:
       #    templates:
       #    - templateName: fail
       - pause: {duration: 30s }
-      ---
-      apiVersion: argoproj.io/v1alpha1
+---
+apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
   name: pass
