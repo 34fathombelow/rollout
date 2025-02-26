@@ -21,15 +21,15 @@ spec:
   revisionHistoryLimit: 3
   strategy:
     canary:
-      analysis:
-        args:
-          - name: url
-            value: >-
-              https://akuity.cloud/api/v1/system/cccd/versions
-        templates:
-        - templateName: pass
       steps:
       - setWeight: 10
+      - analysis:
+          args:
+            - name: url
+              value: >-
+                https://akuity.cloud/api/v1/system/cd/versions
+          templates:
+            - templateName: pass
       - pause: {duration: 30s }
       - setWeight: 100
       - pause: {duration: 30s }
