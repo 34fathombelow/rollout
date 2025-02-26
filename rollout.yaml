@@ -27,7 +27,6 @@ spec:
             value: 'https://akuity.cloud/api/v1/system/cd/versions'
         templates:
         - templateName: pass
-        - templateName: fail
       steps:
       - setWeight: 10
       - pause: {duration: 30s }
