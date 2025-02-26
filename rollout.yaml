@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.27.3
+        image: nginx:1.27.2
         ports:
         - containerPort: 80
   minReadySeconds: 30
@@ -24,7 +24,8 @@ spec:
       analysis:
         args:
           - name: url
-            value: 'https://akuity.cloud/api/v1/system/cd/versions'
+            value: >-
+              https://akuity.cloud/api/v1/system/cd/versions
         templates:
         - templateName: pass
       steps:
