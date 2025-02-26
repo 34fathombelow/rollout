@@ -22,6 +22,10 @@ spec:
   strategy:
     canary:
       analysis:
+        args:
+          - name: url
+            value: >-
+                  https://akuity.cloud/api/v1/system/cd/versions
         templates:
         - templateName: pass
         - templateName: fail
@@ -42,51 +46,40 @@ kind: AnalysisTemplate
 metadata:
   name: pass
 spec:
+  args:
+    - name: url
   metrics:
-  - name: pass
-    provider:
-      job:
-        metadata:
-          annotations:
-            foo: bar
-          labels:
-            foo: bar
-        spec:
-          backoffLimit: 1
-          template:
-            spec:
-              containers:
-              - name: test
-                image: busybox
-                command: ["/bin/sh"]
-                args: 
-                - -c 
-                - echo "Pass Rollouts Test" && sleep 30
-              restartPolicy: Never
+    - count: 5
+      failureLimit: 2
+      interval: 15s
+      name: http-status-check
+      provider:
+        web:
+          method: GET
+          timeoutSeconds: 20
+          url: '{{args.url}}'
+      successCondition: 'true'
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
   name: fail
 spec:
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: pass
+spec:
+  args:
+    - name: url
   metrics:
-  - name: fail
-    provider:
-      job:
-        metadata:
-          annotations:
-            foo: bar
-          labels:
-            foo: bar
-        spec:
-          backoffLimit: 1
-          template:
-            spec:
-              containers:
-              - name: test
-                image: busybox
-                command: ["/bin/sh"]
-                args: 
-                - -c 
-                - echo "Pass Rollouts Test" && sleep 20 
-              restartPolicy: Never
+    - count: 5
+      failureLimit: 2
+      interval: 15s
+      name: http-status-check
+      provider:
+        web:
+          method: GET
+          timeoutSeconds: 20
+          url: '{{args.url}}'
+      successCondition: 'true'
