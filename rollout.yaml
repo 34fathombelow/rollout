@@ -24,8 +24,7 @@ spec:
       analysis:
         args:
           - name: url
-            value: >-
-               https://akuity.cloud/api/v1/system/cd/versions
+            value: https://akuity.cloud/api/v1/system/cd/versions
         templates:
         - templateName: pass
         - templateName: fail
