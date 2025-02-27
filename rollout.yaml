@@ -27,7 +27,7 @@ spec:
           args:
             - name: url
               value: >-
-                https://raw.githubusercontent.com/jessesuen/kargo-rendered-branches/refs/heads/main/healthy
+                https://raw.githubusercontent.com/34fathombelow/rollout/refs/heads/main/healthy
           templates:
             - templateName: pass
       - pause: {duration: 30s }
@@ -51,7 +51,6 @@ spec:
           method: GET
           timeoutSeconds: 20
           url: '{{args.url}}'
-          jsonPath: "{.}"
       successCondition: 'true'
 ---
 apiVersion: argoproj.io/v1alpha1
