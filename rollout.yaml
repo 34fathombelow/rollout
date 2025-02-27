@@ -51,7 +51,7 @@ spec:
           method: GET
           timeoutSeconds: 20
           url: '{{args.url}}'
-          jsonPath: "{$.}"
+          jsonPath: "{.}"
       successCondition: 'true'
 ---
 apiVersion: argoproj.io/v1alpha1
