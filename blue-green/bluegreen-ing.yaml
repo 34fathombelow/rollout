@@ -5,7 +5,7 @@ metadata:
   name: bluegreen
 spec:
   rules:
-  - host: bluegreen-preview.demo.akuity.io
+  - host: bluegreen-preview.demo
     http:
       paths:
       - path: /
@@ -15,7 +15,7 @@ spec:
             name: bluegreen-preview
             port:
               name: http
-  - host: bluegreen.demo.akuity.io
+  - host: bluegreen.demo
     http:
       paths:
       - path: /
