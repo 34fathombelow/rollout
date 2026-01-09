@@ -1,0 +1,27 @@
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bluegreen
+spec:
+  rules:
+  - host: bluegreen-preview.demo.akuity.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: bluegreen-preview
+            port:
+              name: http
+  - host: bluegreen.demo.akuity.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: bluegreen
+            port:
+              name: http
