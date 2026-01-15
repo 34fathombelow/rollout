@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: sleep-analysis
+spec:
+  metrics:
+    - name: sleep-metric
+      # Sleep for 5 minutes (300s) then pass
+      provider:
+        job:
+          spec:
+            backoffLimit: 0
+            template:
+              spec:
+                restartPolicy: Never
+                containers:
+                  - name: sleep
+                    image: busybox
+                    command:
+                      - /bin/sh
+                      - -c
+                      - |
+                        echo "Starting 5 minute sleep..."
+                        sleep 300
+                        echo "Sleep complete, simulating failure."
+                        exit 1

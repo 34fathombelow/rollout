@@ -6,5 +6,5 @@ namespace: demo-bluegreen
 resources:
 - bluegreen-ns.yaml
 - bluegreen-ro.yaml
-- bluegreen-ing.yaml
 - bluegreen-svc.yaml
+- pre-promotion-analysis.yaml
